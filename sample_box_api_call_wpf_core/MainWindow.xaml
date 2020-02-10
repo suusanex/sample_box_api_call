@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:sample_box_api_call_wpf_core"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <TextBlock Text="Client Id"></TextBlock>
+            <TextBox Text="{Binding ClientId}"></TextBox>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <TextBlock Text="Client Secret"></TextBlock>
+            <PasswordBox Name="ClientSecretBox"></PasswordBox>
+        </DockPanel>
+        <Button Content="クライアント認証・トークン取得" Click="OnBtnGetToken"></Button>
+    </DockPanel>
 </Window>

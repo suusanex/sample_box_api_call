@@ -1,0 +1,6 @@
+{
+  "ClientAuthSettings": {
+    "ClientId": "ClientId",
+    "ClientSecret": "ClientSecret"
+  } 
+}
