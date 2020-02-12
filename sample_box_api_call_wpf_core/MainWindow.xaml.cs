@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Box.V2;
+using Box.V2.Auth;
+using Box.V2.Config;
 using Microsoft.Extensions.Configuration;
 
 namespace sample_box_api_call_wpf_core
@@ -63,17 +66,26 @@ namespace sample_box_api_call_wpf_core
 
             m_Bind = new BindingSource();
 
-            var config = new AppConfig();
-            m_Bind.ClientId = config.Config.GetSection("ClientAuthSettings")["ClientId"];
-            ClientSecretBox.Password = config.Config.GetSection("ClientAuthSettings")["ClientSecret"];
-
             DataContext = m_Bind;
 
         }
 
         private void OnBtnGetToken(object sender, RoutedEventArgs e)
         {
+            var clientId = m_Bind.ClientId;
+            var clientSecret = ClientSecretBox.Password;
 
+            var config = new BoxConfig(clientId, clientSecret, new Uri("http://localhost"));
+            var client = new BoxClient(config);
+            
+
+        }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var config = new AppConfig();
+            m_Bind.ClientId = config.Config.GetSection("ClientAuthSettings")["ClientId"];
+            ClientSecretBox.Password = config.Config.GetSection("ClientAuthSettings")["ClientSecret"];
 
         }
     }
