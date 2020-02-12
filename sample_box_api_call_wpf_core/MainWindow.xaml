@@ -15,6 +15,7 @@
             <TextBlock Text="Client Secret"></TextBlock>
             <PasswordBox Name="ClientSecretBox"></PasswordBox>
         </DockPanel>
-        <Button Content="クライアント認証・トークン取得" Click="OnBtnGetToken"></Button>
+        <Button DockPanel.Dock="Top" Content="クライアント認証・トークン取得" Click="OnBtnGetToken"></Button>
+        <WebBrowser DockPanel.Dock="Top" Name="Browser"></WebBrowser>
     </DockPanel>
 </Window>
